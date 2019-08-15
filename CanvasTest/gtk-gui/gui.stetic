@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+  </configuration>
+  <import>
+    <widget-library name="../bin/Debug/CanvasTest.exe" internal="true" />
+  </import>
+  <widget class="Gtk.Window" id="MainWindow" design-size="838 579">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">MainWindow</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.Fixed" id="fixed1">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.DrawingArea" id="drawingarea1">
+            <property name="MemberName" />
+            <property name="WidthRequest">500</property>
+            <property name="HeightRequest">500</property>
+            <signal name="ExposeEvent" handler="OnDrawingarea1ExposeEvent" />
+          </widget>
+          <packing>
+            <property name="X">25</property>
+            <property name="Y">26</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>
