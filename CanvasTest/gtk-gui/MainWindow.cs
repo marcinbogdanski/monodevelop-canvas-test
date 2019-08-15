@@ -9,15 +9,15 @@ public partial class MainWindow
 
 	private global::Gtk.HScale hscaleOffsetX;
 
-	private global::Gtk.Label label1;
+	private global::Gtk.Label labelOffsetX;
 
-	private global::Gtk.Label label2;
+	private global::Gtk.Label labelOffsetY;
 
 	private global::Gtk.HScale hscaleOffsetY;
 
 	private global::Gtk.HScale hscaleScale;
 
-	private global::Gtk.Label label3;
+	private global::Gtk.Label labelScale;
 
 	protected virtual void Build()
 	{
@@ -55,19 +55,19 @@ public partial class MainWindow
 		w2.X = 578;
 		w2.Y = 128;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.label1 = new global::Gtk.Label();
-		this.label1.Name = "label1";
-		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("OffsetX");
-		this.fixed1.Add(this.label1);
-		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label1]));
+		this.labelOffsetX = new global::Gtk.Label();
+		this.labelOffsetX.Name = "labelOffsetX";
+		this.labelOffsetX.LabelProp = global::Mono.Unix.Catalog.GetString("OffsetX");
+		this.fixed1.Add(this.labelOffsetX);
+		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.labelOffsetX]));
 		w3.X = 580;
 		w3.Y = 103;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.label2 = new global::Gtk.Label();
-		this.label2.Name = "label2";
-		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("OffsetY");
-		this.fixed1.Add(this.label2);
-		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label2]));
+		this.labelOffsetY = new global::Gtk.Label();
+		this.labelOffsetY.Name = "labelOffsetY";
+		this.labelOffsetY.LabelProp = global::Mono.Unix.Catalog.GetString("OffsetY");
+		this.fixed1.Add(this.labelOffsetY);
+		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.labelOffsetY]));
 		w4.X = 580;
 		w4.Y = 187;
 		// Container child fixed1.Gtk.Fixed+FixedChild
@@ -102,11 +102,11 @@ public partial class MainWindow
 		w6.X = 576;
 		w6.Y = 288;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.label3 = new global::Gtk.Label();
-		this.label3.Name = "label3";
-		this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("Scale");
-		this.fixed1.Add(this.label3);
-		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label3]));
+		this.labelScale = new global::Gtk.Label();
+		this.labelScale.Name = "labelScale";
+		this.labelScale.LabelProp = global::Mono.Unix.Catalog.GetString("Scale");
+		this.fixed1.Add(this.labelScale);
+		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.labelScale]));
 		w7.X = 579;
 		w7.Y = 268;
 		this.Add(this.fixed1);

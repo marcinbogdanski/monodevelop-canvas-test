@@ -46,7 +46,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Label" id="label1">
+          <widget class="Gtk.Label" id="labelOffsetX">
             <property name="MemberName" />
             <property name="LabelProp" translatable="yes">OffsetX</property>
           </widget>
@@ -56,7 +56,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Label" id="label2">
+          <widget class="Gtk.Label" id="labelOffsetY">
             <property name="MemberName" />
             <property name="LabelProp" translatable="yes">OffsetY</property>
           </widget>
@@ -103,7 +103,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Label" id="label3">
+          <widget class="Gtk.Label" id="labelScale">
             <property name="MemberName" />
             <property name="LabelProp" translatable="yes">Scale</property>
           </widget>

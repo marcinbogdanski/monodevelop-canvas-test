@@ -49,16 +49,25 @@ public partial class MainWindow : Gtk.Window
         ((IDisposable)cr).Dispose();
     }
 
+    private void updateLables()
+    {
+        this.labelOffsetX.Text = String.Format("OffsetX: {0}", this.offsetX);
+        this.labelOffsetY.Text = String.Format("OffsetY: {0}", this.offsetY);
+        this.labelScale.Text = String.Format("Scale: {0}", this.scale);
+    }
+
     protected void OnHscaleOffsetXValueChanged(object sender, EventArgs e)
     {
         HScale hscale = (HScale)sender;
         this.offsetX = hscale.Value;
+        this.updateLables();
         this.drawingarea1.QueueDraw();
     }
 
     protected void OnHscaleOffsetYValueChanged(object sender, EventArgs e)
     {
         HScale hscale = (HScale)sender;
+        this.updateLables();
         this.offsetY = hscale.Value;
         this.drawingarea1.QueueDraw();
     }
@@ -66,6 +75,7 @@ public partial class MainWindow : Gtk.Window
     protected void OnHscaleScaleValueChanged(object sender, EventArgs e)
     {
         HScale hscale = (HScale)sender;
+        this.updateLables();
         this.scale = hscale.Value / 10;
         this.drawingarea1.QueueDraw();
     }
