@@ -19,6 +19,10 @@ public partial class MainWindow
 
 	private global::Gtk.Label labelScale;
 
+	private global::Gtk.Label labelPointX;
+
+	private global::Gtk.Label labelPointY;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -34,7 +38,7 @@ public partial class MainWindow
 		this.drawingarea1 = new global::Gtk.DrawingArea();
 		this.drawingarea1.WidthRequest = 500;
 		this.drawingarea1.HeightRequest = 500;
-		this.drawingarea1.Events = ((global::Gdk.EventMask)(2098048));
+		this.drawingarea1.Events = ((global::Gdk.EventMask)(2097936));
 		this.drawingarea1.Name = "drawingarea1";
 		this.fixed1.Add(this.drawingarea1);
 		global::Gtk.Fixed.FixedChild w1 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.drawingarea1]));
@@ -110,6 +114,22 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.labelScale]));
 		w7.X = 579;
 		w7.Y = 268;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.labelPointX = new global::Gtk.Label();
+		this.labelPointX.Name = "labelPointX";
+		this.labelPointX.LabelProp = global::Mono.Unix.Catalog.GetString("PointX");
+		this.fixed1.Add(this.labelPointX);
+		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.labelPointX]));
+		w8.X = 581;
+		w8.Y = 33;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.labelPointY = new global::Gtk.Label();
+		this.labelPointY.Name = "labelPointY";
+		this.labelPointY.LabelProp = global::Mono.Unix.Catalog.GetString("PointY");
+		this.fixed1.Add(this.labelPointY);
+		global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.labelPointY]));
+		w9.X = 580;
+		w9.Y = 60;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{

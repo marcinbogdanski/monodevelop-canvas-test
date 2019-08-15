@@ -20,7 +20,7 @@
             <property name="MemberName" />
             <property name="WidthRequest">500</property>
             <property name="HeightRequest">500</property>
-            <property name="Events">Button3MotionMask, ButtonPressMask, ButtonReleaseMask, ScrollMask</property>
+            <property name="Events">ButtonMotionMask, ButtonPressMask, ButtonReleaseMask, ScrollMask</property>
             <signal name="ExposeEvent" handler="OnDrawingarea1ExposeEvent" />
             <signal name="ButtonPressEvent" handler="OnDrawingarea1ButtonPressEvent" />
             <signal name="ButtonReleaseEvent" handler="OnDrawingarea1ButtonReleaseEvent" />
@@ -115,6 +115,26 @@
           <packing>
             <property name="X">579</property>
             <property name="Y">268</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="labelPointX">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">PointX</property>
+          </widget>
+          <packing>
+            <property name="X">581</property>
+            <property name="Y">33</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="labelPointY">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">PointY</property>
+          </widget>
+          <packing>
+            <property name="X">580</property>
+            <property name="Y">60</property>
           </packing>
         </child>
       </widget>

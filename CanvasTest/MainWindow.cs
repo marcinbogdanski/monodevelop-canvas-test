@@ -58,9 +58,13 @@ public partial class MainWindow : Gtk.Window
 
     private void updateLables()
     {
+        this.labelPointX.Text = String.Format("PointX: {0}", this.pointX);
+        this.labelPointY.Text = String.Format("PointY: {0}", this.pointY);
         this.labelOffsetX.Text = String.Format("OffsetX: {0}", this.offsetX);
         this.labelOffsetY.Text = String.Format("OffsetY: {0}", this.offsetY);
         this.labelScale.Text = String.Format("Scale: {0}", this.scale);
+
+
     }
 
     protected void OnHscaleOffsetXValueChanged(object sender, EventArgs e)
@@ -89,10 +93,11 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnDrawingarea1ButtonPressEvent(object o, ButtonPressEventArgs args)
     {
-        Console.WriteLine("Button Press");
+        //Console.WriteLine("Button Press");
 
         if(args.Event.Button == 1)
         {
+            this.isPointing = true;
             this.pointX = (args.Event.X - this.offsetX) / this.scale;
             this.pointY = (args.Event.Y - this.offsetY) / this.scale;
         }
@@ -108,7 +113,11 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnDrawingarea1ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
     {
-        Console.WriteLine("Button Release");
+        //Console.WriteLine("Button Release");
+        if (args.Event.Button == 1)
+        {
+            this.isPointing = false;
+        }
         if (args.Event.Button == 3)
         {
             this.isDragging = false;
@@ -117,7 +126,7 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnDrawingarea1ScrollEvent(object o, ScrollEventArgs args)
     {
-        Console.WriteLine("Scroll");
+        //Console.WriteLine("Scroll");
 
         if (args.Event.Direction == Gdk.ScrollDirection.Down)
         {
@@ -131,13 +140,19 @@ public partial class MainWindow : Gtk.Window
         this.drawingarea1.QueueDraw();
     }
 
+    private bool isPointing = false;
     private bool isDragging = false;
     private double lastDragX;
     private double lastDragY;
     protected void OnDrawingarea1MotionNotifyEvent(object o, MotionNotifyEventArgs args)
     {
-        Console.WriteLine(args.ToString());
+        //Console.WriteLine("Motion Notify");
 
+        if (this.isPointing)
+        {
+            this.pointX = (args.Event.X - this.offsetX) / this.scale;
+            this.pointY = (args.Event.Y - this.offsetY) / this.scale;
+        }
         if (this.isDragging)
         {
             this.offsetX += args.Event.X - this.lastDragX;
@@ -145,10 +160,9 @@ public partial class MainWindow : Gtk.Window
 
             this.lastDragX = args.Event.X;
             this.lastDragY = args.Event.Y;
-
-            this.updateLables();
-            this.drawingarea1.QueueDraw();
         }
+        this.updateLables();
+        this.drawingarea1.QueueDraw();
 
     }
 }
