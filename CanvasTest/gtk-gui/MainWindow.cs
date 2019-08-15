@@ -7,7 +7,17 @@ public partial class MainWindow
 
 	private global::Gtk.DrawingArea drawingarea1;
 
-	private global::Gtk.HScale hscale1;
+	private global::Gtk.HScale hscaleOffsetX;
+
+	private global::Gtk.Label label1;
+
+	private global::Gtk.Label label2;
+
+	private global::Gtk.HScale hscaleOffsetY;
+
+	private global::Gtk.HScale hscaleScale;
+
+	private global::Gtk.Label label3;
 
 	protected virtual void Build()
 	{
@@ -30,20 +40,75 @@ public partial class MainWindow
 		w1.X = 25;
 		w1.Y = 26;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.hscale1 = new global::Gtk.HScale(null);
-		this.hscale1.WidthRequest = 200;
-		this.hscale1.CanFocus = true;
-		this.hscale1.Name = "hscale1";
-		this.hscale1.Adjustment.Upper = 100D;
-		this.hscale1.Adjustment.PageIncrement = 10D;
-		this.hscale1.Adjustment.StepIncrement = 1D;
-		this.hscale1.DrawValue = true;
-		this.hscale1.Digits = 0;
-		this.hscale1.ValuePos = ((global::Gtk.PositionType)(2));
-		this.fixed1.Add(this.hscale1);
-		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.hscale1]));
+		this.hscaleOffsetX = new global::Gtk.HScale(null);
+		this.hscaleOffsetX.WidthRequest = 200;
+		this.hscaleOffsetX.CanFocus = true;
+		this.hscaleOffsetX.Name = "hscaleOffsetX";
+		this.hscaleOffsetX.Adjustment.Upper = 100D;
+		this.hscaleOffsetX.Adjustment.PageIncrement = 10D;
+		this.hscaleOffsetX.Adjustment.StepIncrement = 1D;
+		this.hscaleOffsetX.DrawValue = true;
+		this.hscaleOffsetX.Digits = 0;
+		this.hscaleOffsetX.ValuePos = ((global::Gtk.PositionType)(2));
+		this.fixed1.Add(this.hscaleOffsetX);
+		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.hscaleOffsetX]));
 		w2.X = 578;
 		w2.Y = 128;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label1 = new global::Gtk.Label();
+		this.label1.Name = "label1";
+		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("OffsetX");
+		this.fixed1.Add(this.label1);
+		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label1]));
+		w3.X = 580;
+		w3.Y = 103;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label2 = new global::Gtk.Label();
+		this.label2.Name = "label2";
+		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("OffsetY");
+		this.fixed1.Add(this.label2);
+		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label2]));
+		w4.X = 580;
+		w4.Y = 187;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.hscaleOffsetY = new global::Gtk.HScale(null);
+		this.hscaleOffsetY.WidthRequest = 200;
+		this.hscaleOffsetY.CanFocus = true;
+		this.hscaleOffsetY.Name = "hscaleOffsetY";
+		this.hscaleOffsetY.Adjustment.Upper = 100D;
+		this.hscaleOffsetY.Adjustment.PageIncrement = 10D;
+		this.hscaleOffsetY.Adjustment.StepIncrement = 1D;
+		this.hscaleOffsetY.DrawValue = true;
+		this.hscaleOffsetY.Digits = 0;
+		this.hscaleOffsetY.ValuePos = ((global::Gtk.PositionType)(2));
+		this.fixed1.Add(this.hscaleOffsetY);
+		global::Gtk.Fixed.FixedChild w5 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.hscaleOffsetY]));
+		w5.X = 580;
+		w5.Y = 210;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.hscaleScale = new global::Gtk.HScale(null);
+		this.hscaleScale.WidthRequest = 200;
+		this.hscaleScale.CanFocus = true;
+		this.hscaleScale.Name = "hscaleScale";
+		this.hscaleScale.Adjustment.Upper = 100D;
+		this.hscaleScale.Adjustment.PageIncrement = 10D;
+		this.hscaleScale.Adjustment.StepIncrement = 1D;
+		this.hscaleScale.Adjustment.Value = 10D;
+		this.hscaleScale.DrawValue = true;
+		this.hscaleScale.Digits = 0;
+		this.hscaleScale.ValuePos = ((global::Gtk.PositionType)(2));
+		this.fixed1.Add(this.hscaleScale);
+		global::Gtk.Fixed.FixedChild w6 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.hscaleScale]));
+		w6.X = 576;
+		w6.Y = 288;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label3 = new global::Gtk.Label();
+		this.label3.Name = "label3";
+		this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("Scale");
+		this.fixed1.Add(this.label3);
+		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label3]));
+		w7.X = 579;
+		w7.Y = 268;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
@@ -54,5 +119,8 @@ public partial class MainWindow
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.drawingarea1.ExposeEvent += new global::Gtk.ExposeEventHandler(this.OnDrawingarea1ExposeEvent);
+		this.hscaleOffsetX.ValueChanged += new global::System.EventHandler(this.OnHscaleOffsetXValueChanged);
+		this.hscaleOffsetY.ValueChanged += new global::System.EventHandler(this.OnHscaleOffsetYValueChanged);
+		this.hscaleScale.ValueChanged += new global::System.EventHandler(this.OnHscaleScaleValueChanged);
 	}
 }

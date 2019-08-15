@@ -5,17 +5,16 @@ using Cairo;
 public partial class MainWindow : Gtk.Window
 {
     private ImageSurface surface;
+    private double offsetX = 0.0;
+    double offsetY = 0.0;
+    double scale = 1.0;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
 
         string filepath = "/home/marcin/cat.png";
-
-
-        surface = new ImageSurface(filepath);
-
-        Console.WriteLine("Surface.data {0}", surface.Data);
+        this.surface = new ImageSurface(filepath);
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -35,24 +34,39 @@ public partial class MainWindow : Gtk.Window
         int height = area.Allocation.Height;
         int radius = (width < height ? width : height);
 
-
-        double offsetX = -60;
-        double offsetY = -60;
-        double scale = 2.5;
-
         cr.SetSourceRGB(0.0, 0.0, 0.0);
         cr.Rectangle(0, 0, width, height);
         cr.Fill();
 
-        cr.Translate(offsetX, offsetY);                     // move "pointer"
-        cr.Scale(scale, scale);
-        cr.SetSourceSurface(surface, 0, 0);                 // offset surface
-        cr.Rectangle(0, 0, surface.Width, surface.Height);  // offset cutout
+        cr.Translate(this.offsetX, this.offsetY);           // move "pointer"
+        cr.Scale(this.scale, this.scale);
+        cr.SetSourceSurface(this.surface, 0, 0);            // offset surface
+        cr.Rectangle(0, 0, this.surface.Width,              // offset cutout
+                           this.surface.Height);            
         cr.Fill();                                          // apply
 
         ((IDisposable)cr.GetTarget()).Dispose();
         ((IDisposable)cr).Dispose();
     }
 
+    protected void OnHscaleOffsetXValueChanged(object sender, EventArgs e)
+    {
+        HScale hscale = (HScale)sender;
+        this.offsetX = hscale.Value;
+        this.drawingarea1.QueueDraw();
+    }
 
+    protected void OnHscaleOffsetYValueChanged(object sender, EventArgs e)
+    {
+        HScale hscale = (HScale)sender;
+        this.offsetY = hscale.Value;
+        this.drawingarea1.QueueDraw();
+    }
+
+    protected void OnHscaleScaleValueChanged(object sender, EventArgs e)
+    {
+        HScale hscale = (HScale)sender;
+        this.scale = hscale.Value / 10;
+        this.drawingarea1.QueueDraw();
+    }
 }

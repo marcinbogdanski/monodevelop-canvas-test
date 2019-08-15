@@ -28,7 +28,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.HScale" id="hscale1">
+          <widget class="Gtk.HScale" id="hscaleOffsetX">
             <property name="MemberName" />
             <property name="WidthRequest">200</property>
             <property name="CanFocus">True</property>
@@ -38,10 +38,78 @@
             <property name="DrawValue">True</property>
             <property name="Digits">0</property>
             <property name="ValuePos">Top</property>
+            <signal name="ValueChanged" handler="OnHscaleOffsetXValueChanged" />
           </widget>
           <packing>
             <property name="X">578</property>
             <property name="Y">128</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label1">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">OffsetX</property>
+          </widget>
+          <packing>
+            <property name="X">580</property>
+            <property name="Y">103</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label2">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">OffsetY</property>
+          </widget>
+          <packing>
+            <property name="X">580</property>
+            <property name="Y">187</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HScale" id="hscaleOffsetY">
+            <property name="MemberName" />
+            <property name="WidthRequest">200</property>
+            <property name="CanFocus">True</property>
+            <property name="Upper">100</property>
+            <property name="PageIncrement">10</property>
+            <property name="StepIncrement">1</property>
+            <property name="DrawValue">True</property>
+            <property name="Digits">0</property>
+            <property name="ValuePos">Top</property>
+            <signal name="ValueChanged" handler="OnHscaleOffsetYValueChanged" />
+          </widget>
+          <packing>
+            <property name="X">580</property>
+            <property name="Y">210</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HScale" id="hscaleScale">
+            <property name="MemberName" />
+            <property name="WidthRequest">200</property>
+            <property name="CanFocus">True</property>
+            <property name="Upper">100</property>
+            <property name="PageIncrement">10</property>
+            <property name="StepIncrement">1</property>
+            <property name="Value">10</property>
+            <property name="DrawValue">True</property>
+            <property name="Digits">0</property>
+            <property name="ValuePos">Top</property>
+            <signal name="ValueChanged" handler="OnHscaleScaleValueChanged" />
+          </widget>
+          <packing>
+            <property name="X">576</property>
+            <property name="Y">288</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Scale</property>
+          </widget>
+          <packing>
+            <property name="X">579</property>
+            <property name="Y">268</property>
           </packing>
         </child>
       </widget>
