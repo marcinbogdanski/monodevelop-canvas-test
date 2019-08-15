@@ -48,6 +48,10 @@ public partial class MainWindow : Gtk.Window
                            this.surface.Height);            
         cr.Fill();                                          // apply
 
+        cr.SetSourceRGB(1.0, 0.0, 0.0);
+        cr.Arc(this.pointX, this.pointY, 2, 0, 2 * Math.PI);
+        cr.Fill();
+
         ((IDisposable)cr.GetTarget()).Dispose();
         ((IDisposable)cr).Dispose();
     }
@@ -86,21 +90,29 @@ public partial class MainWindow : Gtk.Window
     protected void OnDrawingarea1ButtonPressEvent(object o, ButtonPressEventArgs args)
     {
         Console.WriteLine("Button Press");
-        if(args.Event.Button == 3)
+
+        if(args.Event.Button == 1)
+        {
+            this.pointX = (args.Event.X - this.offsetX) / this.scale;
+            this.pointY = (args.Event.Y - this.offsetY) / this.scale;
+        }
+
+        if (args.Event.Button == 3)
         {
             this.isDragging = true;
             this.lastDragX = args.Event.X;
             this.lastDragY = args.Event.Y;
         }
-        else
-        {
-            this.isDragging = false;
-        }
+        this.drawingarea1.QueueDraw();
     }
 
     protected void OnDrawingarea1ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
     {
         Console.WriteLine("Button Release");
+        if (args.Event.Button == 3)
+        {
+            this.isDragging = false;
+        }
     }
 
     protected void OnDrawingarea1ScrollEvent(object o, ScrollEventArgs args)
