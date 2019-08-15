@@ -16,8 +16,9 @@ public partial class MainWindow : Gtk.Window
     {
         Build();
 
-        string filepath = "/home/marcin/cat.png";
+        string filepath = "cat.png";
         this.surface = new ImageSurface(filepath);
+
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
