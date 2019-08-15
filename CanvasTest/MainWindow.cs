@@ -31,20 +31,24 @@ public partial class MainWindow : Gtk.Window
         DrawingArea area = (DrawingArea)o;
         Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
-        cr.LineWidth = 9;
-        cr.SetSourceRGB(0.7, 0.2, 0.0);
-
         int width = area.Allocation.Width;
         int height = area.Allocation.Height;
         int radius = (width < height ? width : height);
 
-        cr.Translate(width / 2, height / 2);
-        cr.Arc(0, 0, radius / 2 - 10, 0, 2 * Math.PI);
-        cr.StrokePreserve();
 
-        // cr.SetSourceRGB(0.3, 0.4, 0.6);
-        cr.SetSourceSurface(surface, 0, 0);
+        double offsetX = -60;
+        double offsetY = -60;
+        double scale = 2.5;
+
+        cr.SetSourceRGB(0.0, 0.0, 0.0);
+        cr.Rectangle(0, 0, width, height);
         cr.Fill();
+
+        cr.Translate(offsetX, offsetY);                     // move "pointer"
+        cr.Scale(scale, scale);
+        cr.SetSourceSurface(surface, 0, 0);                 // offset surface
+        cr.Rectangle(0, 0, surface.Width, surface.Height);  // offset cutout
+        cr.Fill();                                          // apply
 
         ((IDisposable)cr.GetTarget()).Dispose();
         ((IDisposable)cr).Dispose();

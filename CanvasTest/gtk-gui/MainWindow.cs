@@ -7,6 +7,8 @@ public partial class MainWindow
 
 	private global::Gtk.DrawingArea drawingarea1;
 
+	private global::Gtk.HScale hscale1;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -27,6 +29,21 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w1 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.drawingarea1]));
 		w1.X = 25;
 		w1.Y = 26;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.hscale1 = new global::Gtk.HScale(null);
+		this.hscale1.WidthRequest = 200;
+		this.hscale1.CanFocus = true;
+		this.hscale1.Name = "hscale1";
+		this.hscale1.Adjustment.Upper = 100D;
+		this.hscale1.Adjustment.PageIncrement = 10D;
+		this.hscale1.Adjustment.StepIncrement = 1D;
+		this.hscale1.DrawValue = true;
+		this.hscale1.Digits = 0;
+		this.hscale1.ValuePos = ((global::Gtk.PositionType)(2));
+		this.fixed1.Add(this.hscale1);
+		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.hscale1]));
+		w2.X = 578;
+		w2.Y = 128;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
