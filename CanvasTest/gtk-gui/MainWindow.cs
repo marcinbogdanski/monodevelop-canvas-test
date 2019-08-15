@@ -34,6 +34,7 @@ public partial class MainWindow
 		this.drawingarea1 = new global::Gtk.DrawingArea();
 		this.drawingarea1.WidthRequest = 500;
 		this.drawingarea1.HeightRequest = 500;
+		this.drawingarea1.Events = ((global::Gdk.EventMask)(2098048));
 		this.drawingarea1.Name = "drawingarea1";
 		this.fixed1.Add(this.drawingarea1);
 		global::Gtk.Fixed.FixedChild w1 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.drawingarea1]));
@@ -119,6 +120,10 @@ public partial class MainWindow
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.drawingarea1.ExposeEvent += new global::Gtk.ExposeEventHandler(this.OnDrawingarea1ExposeEvent);
+		this.drawingarea1.ButtonPressEvent += new global::Gtk.ButtonPressEventHandler(this.OnDrawingarea1ButtonPressEvent);
+		this.drawingarea1.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler(this.OnDrawingarea1ButtonReleaseEvent);
+		this.drawingarea1.ScrollEvent += new global::Gtk.ScrollEventHandler(this.OnDrawingarea1ScrollEvent);
+		this.drawingarea1.MotionNotifyEvent += new global::Gtk.MotionNotifyEventHandler(this.OnDrawingarea1MotionNotifyEvent);
 		this.hscaleOffsetX.ValueChanged += new global::System.EventHandler(this.OnHscaleOffsetXValueChanged);
 		this.hscaleOffsetY.ValueChanged += new global::System.EventHandler(this.OnHscaleOffsetYValueChanged);
 		this.hscaleScale.ValueChanged += new global::System.EventHandler(this.OnHscaleScaleValueChanged);

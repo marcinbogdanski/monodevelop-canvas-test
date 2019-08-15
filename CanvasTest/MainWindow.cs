@@ -9,6 +9,9 @@ public partial class MainWindow : Gtk.Window
     double offsetY = 0.0;
     double scale = 1.0;
 
+    double pointX = 128;
+    double pointY = 128;
+
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
@@ -78,5 +81,62 @@ public partial class MainWindow : Gtk.Window
         this.updateLables();
         this.scale = hscale.Value / 10;
         this.drawingarea1.QueueDraw();
+    }
+
+    protected void OnDrawingarea1ButtonPressEvent(object o, ButtonPressEventArgs args)
+    {
+        Console.WriteLine("Button Press");
+        if(args.Event.Button == 3)
+        {
+            this.isDragging = true;
+            this.lastDragX = args.Event.X;
+            this.lastDragY = args.Event.Y;
+        }
+        else
+        {
+            this.isDragging = false;
+        }
+    }
+
+    protected void OnDrawingarea1ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
+    {
+        Console.WriteLine("Button Release");
+    }
+
+    protected void OnDrawingarea1ScrollEvent(object o, ScrollEventArgs args)
+    {
+        Console.WriteLine("Scroll");
+
+        if (args.Event.Direction == Gdk.ScrollDirection.Down)
+        {
+            this.scale *= 0.9;
+        }
+        else if (args.Event.Direction == Gdk.ScrollDirection.Up)
+        {
+            this.scale /= 0.9;
+        }
+        this.updateLables();
+        this.drawingarea1.QueueDraw();
+    }
+
+    private bool isDragging = false;
+    private double lastDragX;
+    private double lastDragY;
+    protected void OnDrawingarea1MotionNotifyEvent(object o, MotionNotifyEventArgs args)
+    {
+        Console.WriteLine(args.ToString());
+
+        if (this.isDragging)
+        {
+            this.offsetX += args.Event.X - this.lastDragX;
+            this.offsetY += args.Event.Y - this.lastDragY;
+
+            this.lastDragX = args.Event.X;
+            this.lastDragY = args.Event.Y;
+
+            this.updateLables();
+            this.drawingarea1.QueueDraw();
+        }
+
     }
 }

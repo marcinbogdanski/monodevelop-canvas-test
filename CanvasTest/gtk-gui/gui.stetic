@@ -20,7 +20,12 @@
             <property name="MemberName" />
             <property name="WidthRequest">500</property>
             <property name="HeightRequest">500</property>
+            <property name="Events">Button3MotionMask, ButtonPressMask, ButtonReleaseMask, ScrollMask</property>
             <signal name="ExposeEvent" handler="OnDrawingarea1ExposeEvent" />
+            <signal name="ButtonPressEvent" handler="OnDrawingarea1ButtonPressEvent" />
+            <signal name="ButtonReleaseEvent" handler="OnDrawingarea1ButtonReleaseEvent" />
+            <signal name="ScrollEvent" handler="OnDrawingarea1ScrollEvent" />
+            <signal name="MotionNotifyEvent" handler="OnDrawingarea1MotionNotifyEvent" />
           </widget>
           <packing>
             <property name="X">25</property>
