@@ -1,12 +1,21 @@
 ﻿using System;
 using Gtk;
-
+using Cairo;
 
 public partial class MainWindow : Gtk.Window
 {
+    private ImageSurface surface;
+
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
+
+        string filepath = "/home/marcin/cat.png";
+
+
+        surface = new ImageSurface(filepath);
+
+        Console.WriteLine("Surface.data {0}", surface.Data);
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -33,10 +42,13 @@ public partial class MainWindow : Gtk.Window
         cr.Arc(0, 0, radius / 2 - 10, 0, 2 * Math.PI);
         cr.StrokePreserve();
 
-        cr.SetSourceRGB(0.3, 0.4, 0.6);
+        // cr.SetSourceRGB(0.3, 0.4, 0.6);
+        cr.SetSourceSurface(surface, 0, 0);
         cr.Fill();
 
         ((IDisposable)cr.GetTarget()).Dispose();
         ((IDisposable)cr).Dispose();
     }
+
+
 }
